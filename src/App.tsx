@@ -55,6 +55,7 @@ const projects: Project[] = [
       "Multi-day itinerary generation",
     ],
   },
+
   {
     number: "02",
     title: "SA201 Reporter",
@@ -75,6 +76,7 @@ const projects: Project[] = [
       "ID-List XML generation",
     ],
   },
+
   {
     number: "03",
     title: "qPCR Machine Learning",
@@ -92,6 +94,7 @@ const projects: Project[] = [
       "Laboratory data processing",
     ],
   },
+
   {
     number: "04",
     title: "Vela Analytics",
@@ -109,6 +112,7 @@ const projects: Project[] = [
       "Production maintenance",
     ],
   },
+
   {
     number: "05",
     title: "One QPCR",
@@ -125,6 +129,7 @@ const projects: Project[] = [
       "Laboratory data handling",
     ],
   },
+
   {
     number: "06",
     title: "Workflow Automation",
@@ -200,153 +205,184 @@ function ThemeToggle() {
   );
 }
 
-function ProjectCard({
-  project,
-  onOpen,
-}: {
-  project: Project;
-  onOpen: () => void;
-}) {
-  return (
-    <motion.button
-      type="button"
-      className={`project-card ${
-        project.featured ? "project-card-featured" : ""
-      }`}
-      onClick={onOpen}
-      whileHover={{ y: -8 }}
-      whileTap={{ scale: 0.985 }}
-      layoutId={`project-${project.number}`}
-    >
-      <div className="project-card-top">
-        <span className="project-number">{project.number}</span>
-
-        <span className="project-arrow">
-          <ArrowUpRight size={21} />
-        </span>
-      </div>
-
-      <div className="project-card-icon">{project.icon}</div>
-
-      <div className="project-card-content">
-        <span className="eyebrow">{project.category}</span>
-
-        <h3>{project.title}</h3>
-
-        <p className="project-subtitle">{project.subtitle}</p>
-
-        <p className="project-description">{project.description}</p>
-      </div>
-
-      <div className="project-tech">
-        {project.technologies.slice(0, 4).map((technology) => (
-          <span key={technology}>{technology}</span>
-        ))}
-      </div>
-    </motion.button>
-  );
-}
-
-function ProjectModal({
-  project,
-  onClose,
-}: {
-  project: Project;
-  onClose: () => void;
-}) {
-  return (
-    <AnimatePresence>
-      <motion.div
-        className="project-overlay"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+/* =========================================================
+   PROJECT FLIP CARD
+   ========================================================= */
+   function ProjectCard({ project }: { project: Project }) {
+    const [flipped, setFlipped] = useState(false);
+  
+    const handleFlip = () => {
+      setFlipped(true);
+    };
+  
+    const handleClose = (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.stopPropagation();
+      setFlipped(false);
+    };
+  
+    return (
+      <motion.article
+        className="project-card"
+        whileHover={!flipped ? { y: -8 } : undefined}
+        onClick={!flipped ? handleFlip : undefined}
+        onKeyDown={(event) => {
+          if (!flipped && (event.key === "Enter" || event.key === " ")) {
+            event.preventDefault();
+            handleFlip();
+          }
+        }}
+        role="button"
+        tabIndex={flipped ? -1 : 0}
+        aria-label={`View details for ${project.title}`}
       >
         <motion.div
-          className="project-modal"
-          layoutId={`project-${project.number}`}
-          initial={{ opacity: 0, y: 40, scale: 0.96 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 30, scale: 0.96 }}
+          className="project-card-inner"
+          animate={{
+            rotateY: flipped ? 180 : 0,
+          }}
+          transition={{
+            duration: 0.75,
+            ease: [0.22, 1, 0.36, 1],
+          }}
         >
-          <button
-            type="button"
-            className="modal-close"
-            onClick={onClose}
-            aria-label="Close project"
-          >
-            <X size={22} />
-          </button>
-
-          <div className="modal-header">
-            <span className="eyebrow">
-              {project.number} / {project.category}
-            </span>
-
-            <h2>{project.title}</h2>
-
-            <p>{project.subtitle}</p>
-          </div>
-
-          <div className="modal-visual">
-            <div className="modal-visual-glow" />
-
-            <div className="modal-visual-icon">{project.icon}</div>
-
-            <span>{project.title}</span>
-          </div>
-
-          <div className="modal-grid">
-            <div>
-              <span className="eyebrow">OVERVIEW</span>
-
-              <p className="modal-description">{project.description}</p>
+          {/* =================================================
+              FRONT
+          ================================================= */}
+  
+          <div className="project-card-face project-card-front">
+            <div className="project-card-top">
+              <span className="project-number">
+                {project.number}
+              </span>
+  
+              <span className="project-arrow">
+                <ArrowUpRight size={22} />
+              </span>
             </div>
-
-            <div>
-              <span className="eyebrow">WHAT I BUILT</span>
-
+  
+            <div className="project-card-icon">
+              {project.icon}
+            </div>
+  
+            <div className="project-card-content">
+              <p className="project-category">
+                {project.category}
+              </p>
+  
+              <h3>{project.title}</h3>
+  
+              <p className="project-subtitle">
+                {project.subtitle}
+              </p>
+  
+              <p className="project-description">
+                {project.description}
+              </p>
+            </div>
+  
+            <div className="project-card-footer">
+              <div className="project-tech-list">
+                {project.technologies
+                  .slice(0, 4)
+                  .map((technology) => (
+                    <span key={technology}>
+                      {technology}
+                    </span>
+                  ))}
+              </div>
+  
+              <span className="flip-hint">
+                CLICK TO EXPLORE
+              </span>
+            </div>
+          </div>
+  
+          {/* =================================================
+              BACK
+          ================================================= */}
+  
+          <div className="project-card-face project-card-back">
+            {/* CLOSE BUTTON */}
+  
+            <button
+              type="button"
+              className="project-card-close"
+              onClick={handleClose}
+              aria-label="Close project details"
+            >
+              <X size={20} />
+            </button>
+  
+            <div className="project-card-top">
+              <span className="project-number">
+                {project.number}
+              </span>
+  
+              <span className="project-back-label">
+                PROJECT DETAILS
+              </span>
+            </div>
+  
+            <div className="project-card-back-content">
+              <p className="project-category">
+                {project.category}
+              </p>
+  
+              <h3>{project.title}</h3>
+  
+              <p className="project-subtitle">
+                {project.subtitle}
+              </p>
+  
+              <div className="project-back-divider" />
+  
+              <p className="project-back-label">
+                WHAT I BUILT
+              </p>
+  
               <ul className="project-details">
                 {project.details.map((detail) => (
-                  <li key={detail}>{detail}</li>
+                  <li key={detail}>
+                    <span>+</span>
+                    {detail}
+                  </li>
                 ))}
               </ul>
             </div>
-          </div>
-
-          <div className="modal-tech">
-            {project.technologies.map((technology) => (
-              <span key={technology}>{technology}</span>
-            ))}
+  
+            <div className="project-back-tech">
+              {project.technologies.map((technology) => (
+                <span key={technology}>
+                  {technology}
+                </span>
+              ))}
+            </div>
           </div>
         </motion.div>
-      </motion.div>
-    </AnimatePresence>
-  );
-}
+      </motion.article>
+    );
+  }
+
+/* =========================================================
+   MAIN APP
+   ========================================================= */
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(
-    null,
-  );
 
-  useEffect(() => {
-    document.body.style.overflow = selectedProject ? "hidden" : "";
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [selectedProject]);
-
-  const closeMenu = () => setMenuOpen(false);
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
   return (
     <div className="site">
-      {/* NAVIGATION */}
+      {/* =====================================================
+          NAVIGATION
+      ===================================================== */}
+
       <nav className="navbar">
         <a href="#top" className="brand" onClick={closeMenu}>
-          NAN EI
+          NAN
         </a>
 
         <div className="desktop-nav">
@@ -360,19 +396,24 @@ function App() {
           <ThemeToggle />
 
           <a href="#contact" className="nav-contact">
-            Let's talk
+            Let&apos;s talk
           </a>
 
           <button
             type="button"
             className="menu-button"
             onClick={() => setMenuOpen((value) => !value)}
-            aria-label="Open menu"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
           >
             {menuOpen ? <X size={21} /> : <Menu size={21} />}
           </button>
         </div>
       </nav>
+
+      {/* =====================================================
+          MOBILE MENU
+      ===================================================== */}
 
       <AnimatePresence>
         {menuOpen && (
@@ -385,15 +426,19 @@ function App() {
             <a href="#about" onClick={closeMenu}>
               About
             </a>
+
             <a href="#work" onClick={closeMenu}>
               Work
             </a>
+
             <a href="#experience" onClick={closeMenu}>
               Experience
             </a>
+
             <a href="#skills" onClick={closeMenu}>
               Skills
             </a>
+
             <a href="#contact" onClick={closeMenu}>
               Contact
             </a>
@@ -402,7 +447,10 @@ function App() {
       </AnimatePresence>
 
       <main id="top">
-        {/* HERO */}
+        {/* ===================================================
+            HERO
+        =================================================== */}
+
         <section className="hero section-dark">
           <div className="hero-grid" />
 
@@ -465,12 +513,15 @@ function App() {
 
           <div className="hero-bottom">
             <span>FULL-STACK ENGINEERING</span>
-            <span>AI & AUTOMATION</span>
+            <span>AI &amp; AUTOMATION</span>
             <span>PRODUCT DEVELOPMENT</span>
           </div>
         </section>
 
-        {/* ABOUT */}
+        {/* ===================================================
+            ABOUT
+        =================================================== */}
+
         <section id="about" className="about section-light">
           <div className="section-container">
             <div className="section-label">01 — ABOUT</div>
@@ -484,9 +535,9 @@ function App() {
 
               <div className="about-copy">
                 <p>
-                  I’m a Senior Software Engineer focused on building reliable,
-                  maintainable software from backend services to polished user
-                  interfaces.
+                  I&apos;m a Senior Software Engineer focused on building
+                  reliable, maintainable software from backend services to
+                  polished user interfaces.
                 </p>
 
                 <p>
@@ -505,14 +556,17 @@ function App() {
           </div>
         </section>
 
-        {/* WORK */}
+        {/* ===================================================
+            WORK
+        =================================================== */}
+
         <section id="work" className="work section-dark">
           <div className="section-container">
             <div className="section-heading-light">
               <div className="section-label">02 — SELECTED WORK</div>
 
               <h2>
-                Things I’ve
+                Things I&apos;ve
                 <br />
                 <span>built.</span>
               </h2>
@@ -523,20 +577,23 @@ function App() {
               </p>
             </div>
 
-            <div className="project-grid">
+            {/* IMPORTANT: only ONE project grid */}
+            <div className="projects-grid">
               {projects.map((project) => (
-                <ProjectCard
-                  key={project.number}
-                  project={project}
-                  onOpen={() => setSelectedProject(project)}
-                />
+                <ProjectCard key={project.title} project={project} />
               ))}
             </div>
           </div>
         </section>
 
-        {/* EXPERIENCE */}
-        <section id="experience" className="experience section-light">
+        {/* ===================================================
+            EXPERIENCE
+        =================================================== */}
+
+        <section
+          id="experience"
+          className="experience section-light"
+        >
           <div className="section-container">
             <div className="section-label">03 — EXPERIENCE</div>
 
@@ -554,6 +611,7 @@ function App() {
 
                 <div>
                   <h3>Senior Software Engineer</h3>
+
                   <p className="timeline-company">
                     Vela Diagnostics PTE. LTD.
                   </p>
@@ -571,6 +629,7 @@ function App() {
 
                 <div>
                   <h3>Senior Software Developer</h3>
+
                   <p className="timeline-company">CB Bank Myanmar</p>
 
                   <p>
@@ -585,6 +644,7 @@ function App() {
 
                 <div>
                   <h3>Software Developer</h3>
+
                   <p className="timeline-company">KoeKoeTech</p>
 
                   <p>
@@ -597,7 +657,10 @@ function App() {
           </div>
         </section>
 
-        {/* SKILLS */}
+        {/* ===================================================
+            SKILLS
+        =================================================== */}
+
         <section id="skills" className="skills section-dark">
           <div className="section-container">
             <div className="section-label">04 — TECHNOLOGY</div>
@@ -618,16 +681,22 @@ function App() {
           </div>
         </section>
 
-        {/* APPROACH */}
+        {/* ===================================================
+            APPROACH
+        =================================================== */}
+
         <section className="approach section-light">
           <div className="section-container">
-            <div className="section-label">05 — ENGINEERING APPROACH</div>
+            <div className="section-label">
+              05 — ENGINEERING APPROACH
+            </div>
 
             <div className="approach-grid">
               <div className="approach-number">01</div>
 
               <div>
                 <h3>Understand the problem first.</h3>
+
                 <p>
                   Good software starts with understanding what people actually
                   need, not immediately choosing a framework.
@@ -638,6 +707,7 @@ function App() {
 
               <div>
                 <h3>Build for the real world.</h3>
+
                 <p>
                   I care about reliability, maintainability, deployment,
                   performance and what happens after the code reaches
@@ -649,6 +719,7 @@ function App() {
 
               <div>
                 <h3>Keep complexity invisible.</h3>
+
                 <p>
                   The underlying system can be sophisticated. The experience
                   should still feel simple.
@@ -658,7 +729,10 @@ function App() {
           </div>
         </section>
 
-        {/* CONTACT */}
+        {/* ===================================================
+            CONTACT
+        =================================================== */}
+
         <section id="contact" className="contact section-dark">
           <div className="contact-glow" />
 
@@ -666,17 +740,20 @@ function App() {
             <div className="section-label">06 — CONTACT</div>
 
             <h2>
-              Let's build
+              Let&apos;s build
               <br />
               <span>something great.</span>
             </h2>
 
             <p>
-              I'm currently open to Senior Software Engineering and Full-Stack
-              opportunities.
+              I&apos;m currently open to Senior Software Engineering and
+              Full-Stack opportunities.
             </p>
 
-            <a href="mailto:your.email@example.com" className="contact-button">
+            <a
+              href="mailto:your.email@example.com"
+              className="contact-button"
+            >
               <Mail size={19} />
               Get in touch
               <ArrowUpRight size={18} />
@@ -685,7 +762,10 @@ function App() {
         </section>
       </main>
 
-      {/* FOOTER */}
+      {/* =====================================================
+          FOOTER
+      ===================================================== */}
+
       <footer className="footer section-dark">
         <span>© 2026 Nan Ei Ei Htun</span>
 
@@ -699,13 +779,6 @@ function App() {
           </a>
         </div>
       </footer>
-
-      {selectedProject && (
-        <ProjectModal
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-        />
-      )}
     </div>
   );
 }
