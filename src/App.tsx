@@ -1,3 +1,4 @@
+
 import { useEffect, useState, type ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -51,6 +52,7 @@ const projects: Project[] = [
       "Integration with QuantStudio 12K Flex",
     ],
   },
+
   {
     number: "02",
     title: "Sentosa Workflow Assistant",
@@ -67,6 +69,7 @@ const projects: Project[] = [
       "Laboratory process automation",
     ],
   },
+
   {
     number: "03",
     title: "SX-Flex-Assistant",
@@ -83,6 +86,7 @@ const projects: Project[] = [
       "Operational troubleshooting",
     ],
   },
+
   {
     number: "04",
     title: "ID-List Generator",
@@ -100,6 +104,7 @@ const projects: Project[] = [
       "Automated laboratory workflow support",
     ],
   },
+
   {
     number: "05",
     title: "Vela Analytics",
@@ -118,6 +123,7 @@ const projects: Project[] = [
       "Application maintenance",
     ],
   },
+
   {
     number: "06",
     title: "CB Bank iBanking",
@@ -125,7 +131,14 @@ const projects: Project[] = [
     description:
       "Contributed to banking platforms supporting personal and corporate customers, payments, transfers and financial reporting.",
     category: "BANKING",
-    technologies: ["C#", ".NET", "WCF", "Web API", "SQL Server", "RabbitMQ"],
+    technologies: [
+      "C#",
+      ".NET",
+      "WCF",
+      "Web API",
+      "SQL Server",
+      "RabbitMQ",
+    ],
     icon: <Code2 size={24} />,
     details: [
       "Personal iBanking platform",
@@ -139,6 +152,7 @@ const projects: Project[] = [
       "Electronic statements",
     ],
   },
+
   {
     number: "07",
     title: "MayMay / MayMay Plus",
@@ -157,6 +171,7 @@ const projects: Project[] = [
       "Content management workflows",
     ],
   },
+
   {
     number: "08",
     title: "Central Statistical Organization",
@@ -174,6 +189,7 @@ const projects: Project[] = [
       "Backend integration",
     ],
   },
+
   {
     number: "09",
     title: "AI Travel Planner",
@@ -200,12 +216,13 @@ const projects: Project[] = [
       "Multi-day itinerary planning",
     ],
   },
+
   {
     number: "10",
     title: "qPCR Machine Learning",
-    subtitle: "Turning laboratory data into intelligence.",
+    subtitle: "Exploring machine learning with laboratory data.",
     description:
-      "A Python-based machine learning project exploring predictive analysis using qPCR laboratory data.",
+      "A Python-based machine learning project exploring data preparation, model training and prediction using qPCR laboratory data.",
     category: "AI / MACHINE LEARNING",
     technologies: ["Python", "Machine Learning", "Data Processing"],
     icon: <Database size={24} />,
@@ -217,7 +234,6 @@ const projects: Project[] = [
       "Laboratory data processing",
     ],
   },
-
 ];
 
 const skills = [
@@ -241,7 +257,15 @@ const skills = [
   "RabbitMQ",
   "WPF",
   "WCF",
+  "AutoIt",
+  "LINQ",
+  "HTML5",
+  "CSS3",
+  "Bootstrap",
+  "jQuery",
   "Git",
+  "TeamCity",
+  "Octopus Deploy",
 ];
 
 function ThemeToggle() {
@@ -267,10 +291,13 @@ function ThemeToggle() {
       type="button"
       className="theme-toggle"
       onClick={() =>
-        setTheme((current) => (current === "dark" ? "light" : "dark"))
+        setTheme((current) =>
+          current === "dark" ? "light" : "dark"
+        )
       }
-      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"
-        } mode`}
+      aria-label={`Switch to ${
+        theme === "dark" ? "light" : "dark"
+      } mode`}
     >
       {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
     </button>
@@ -280,6 +307,7 @@ function ThemeToggle() {
 /* =========================================================
    PROJECT FLIP CARD
    ========================================================= */
+
 function ProjectCard({ project }: { project: Project }) {
   const [flipped, setFlipped] = useState(false);
 
@@ -287,7 +315,9 @@ function ProjectCard({ project }: { project: Project }) {
     setFlipped(true);
   };
 
-  const handleClose = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClose = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
     event.stopPropagation();
     setFlipped(false);
   };
@@ -298,7 +328,10 @@ function ProjectCard({ project }: { project: Project }) {
       whileHover={!flipped ? { y: -8 } : undefined}
       onClick={!flipped ? handleFlip : undefined}
       onKeyDown={(event) => {
-        if (!flipped && (event.key === "Enter" || event.key === " ")) {
+        if (
+          !flipped &&
+          (event.key === "Enter" || event.key === " ")
+        ) {
           event.preventDefault();
           handleFlip();
         }
@@ -318,8 +351,8 @@ function ProjectCard({ project }: { project: Project }) {
         }}
       >
         {/* =================================================
-              FRONT
-          ================================================= */}
+            FRONT
+        ================================================= */}
 
         <div className="project-card-face project-card-front">
           <div className="project-card-top">
@@ -327,7 +360,7 @@ function ProjectCard({ project }: { project: Project }) {
               {project.number}
             </span>
 
-            <span className="project-arrow">
+            <span className="project-arrow" aria-hidden="true">
               <ArrowUpRight size={22} />
             </span>
           </div>
@@ -370,12 +403,10 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
 
         {/* =================================================
-              BACK
-          ================================================= */}
+            BACK
+        ================================================= */}
 
         <div className="project-card-face project-card-back">
-          {/* CLOSE BUTTON */}
-
           <button
             type="button"
             className="project-card-close"
@@ -448,12 +479,17 @@ function App() {
 
   return (
     <div className="site">
+
       {/* =====================================================
           NAVIGATION
       ===================================================== */}
 
       <nav className="navbar">
-        <a href="#top" className="brand" onClick={closeMenu}>
+        <a
+          href="#top"
+          className="brand"
+          onClick={closeMenu}
+        >
           NAN
         </a>
 
@@ -467,18 +503,29 @@ function App() {
         <div className="nav-actions">
           <ThemeToggle />
 
-          <a href="#contact" className="nav-contact">
+          <a
+            href="#contact"
+            className="nav-contact"
+          >
             Let&apos;s talk
           </a>
 
           <button
             type="button"
             className="menu-button"
-            onClick={() => setMenuOpen((value) => !value)}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            onClick={() =>
+              setMenuOpen((value) => !value)
+            }
+            aria-label={
+              menuOpen ? "Close menu" : "Open menu"
+            }
             aria-expanded={menuOpen}
           >
-            {menuOpen ? <X size={21} /> : <Menu size={21} />}
+            {menuOpen ? (
+              <X size={21} />
+            ) : (
+              <Menu size={21} />
+            )}
           </button>
         </div>
       </nav>
@@ -491,9 +538,18 @@ function App() {
         {menuOpen && (
           <motion.div
             className="mobile-menu"
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
+            initial={{
+              opacity: 0,
+              y: -12,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            exit={{
+              opacity: 0,
+              y: -12,
+            }}
           >
             <a href="#about" onClick={closeMenu}>
               About
@@ -503,7 +559,10 @@ function App() {
               Work
             </a>
 
-            <a href="#experience" onClick={closeMenu}>
+            <a
+              href="#experience"
+              onClick={closeMenu}
+            >
               Experience
             </a>
 
@@ -519,6 +578,7 @@ function App() {
       </AnimatePresence>
 
       <main id="top">
+
         {/* ===================================================
             HERO
         =================================================== */}
@@ -529,8 +589,14 @@ function App() {
           <div className="hero-content">
             <motion.div
               className="availability"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{
+                opacity: 0,
+                y: 12,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
             >
               <span />
               Available for new opportunities
@@ -546,9 +612,18 @@ function App() {
             </motion.p>
 
             <motion.h1
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15, duration: 0.7 }}
+              initial={{
+                opacity: 0,
+                y: 25,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                delay: 0.15,
+                duration: 0.7,
+              }}
             >
               I build software
               <br />
@@ -557,34 +632,56 @@ function App() {
 
             <motion.p
               className="hero-description"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
               transition={{ delay: 0.25 }}
             >
-              Senior Software Engineer with 9+ years of experience building
-              full-stack applications across biotechnology,healthcare, automation and banking
+              Senior Software Engineer with 9+ years
+              of experience building full-stack
+              applications across healthcare,
+              diagnostics, automation and banking.
             </motion.p>
 
             <motion.div
               className="hero-actions"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
               transition={{ delay: 0.35 }}
             >
-              <a href="#work" className="button button-primary">
+              <a
+                href="#work"
+                className="button button-primary"
+              >
                 Explore my work
                 <ArrowDown size={17} />
               </a>
 
-              <a href="#contact" className="button button-secondary">
-                Get in touch
+              <a
+                href="/Nan_Ei_Ei_Htun(Senior Software Engineer).pdf"
+                download
+                className="button button-secondary"
+              >
+                Download CV
+                <ArrowUpRight size={17} />
               </a>
             </motion.div>
           </div>
 
           <div className="hero-bottom">
             <span>FULL-STACK ENGINEERING</span>
-            <span>AI &amp; AUTOMATION</span>
+            <span>LABORATORY &amp; AUTOMATION</span>
             <span>PRODUCT DEVELOPMENT</span>
           </div>
         </section>
@@ -593,9 +690,14 @@ function App() {
             ABOUT
         =================================================== */}
 
-        <section id="about" className="about section-light">
+        <section
+          id="about"
+          className="about section-light"
+        >
           <div className="section-container">
-            <div className="section-label">01 — ABOUT</div>
+            <div className="section-label">
+              01 — ABOUT
+            </div>
 
             <div className="about-layout">
               <h2>
@@ -606,21 +708,26 @@ function App() {
 
               <div className="about-copy">
                 <p>
-                  I&apos;m a Senior Software Engineer focused on building
-                  reliable, maintainable software from backend services to
-                  polished user interfaces.
+                  I&apos;m a Senior Software Engineer
+                  with 9+ years of experience building
+                  full-stack applications across
+                  healthcare, diagnostics, automation,
+                  and banking.
                 </p>
 
                 <p>
-                  My experience spans backend services, web applications, laboratory
-                  software, banking systems, automation workflows, analytics, and
-                  data-driven applications.
+                  My experience spans backend services,
+                  web applications, laboratory software,
+                  banking systems, automation workflows,
+                  analytics, and data-driven
+                  applications.
                 </p>
 
                 <p>
-                  I enjoy taking complicated technical problems and turning
-                  them into products that people can actually understand and
-                  use.
+                  I enjoy taking complicated technical
+                  problems and turning them into reliable,
+                  maintainable software that people can
+                  actually understand and use.
                 </p>
               </div>
             </div>
@@ -631,10 +738,15 @@ function App() {
             WORK
         =================================================== */}
 
-        <section id="work" className="work section-dark">
+        <section
+          id="work"
+          className="work section-dark"
+        >
           <div className="section-container">
             <div className="section-heading-light">
-              <div className="section-label">02 — SELECTED WORK</div>
+              <div className="section-label">
+                02 — SELECTED WORK
+              </div>
 
               <h2>
                 Things I&apos;ve
@@ -643,15 +755,19 @@ function App() {
               </h2>
 
               <p>
-                A selection of personal projects, professional systems and
-                engineering experiments.
+                A selection of personal projects,
+                professional systems and engineering
+                work across healthcare, banking,
+                automation and web platforms.
               </p>
             </div>
 
-            {/* IMPORTANT: only ONE project grid */}
             <div className="projects-grid">
               {projects.map((project) => (
-                <ProjectCard key={project.title} project={project} />
+                <ProjectCard
+                  key={project.title}
+                  project={project}
+                />
               ))}
             </div>
           </div>
@@ -661,93 +777,141 @@ function App() {
             EXPERIENCE
         =================================================== */}
 
-<section id="experience" className="experience section-light">
-  <div className="section-container">
-    <div className="section-label">03 — EXPERIENCE</div>
+        <section
+          id="experience"
+          className="experience section-light"
+        >
+          <div className="section-container">
+            <div className="section-label">
+              03 — EXPERIENCE
+            </div>
 
-    <div className="experience-heading">
-      <h2>
-        9+ years of
-        <br />
-        <span>building software.</span>
-      </h2>
-    </div>
+            <div className="experience-heading">
+              <h2>
+                9+ years of
+                <br />
+                <span>building software.</span>
+              </h2>
+            </div>
 
-    <div className="timeline">
-      <div className="timeline-item">
-        <div className="timeline-year">2023 — PRESENT</div>
+            <div className="timeline">
 
-        <div>
-          <h3>Senior Software Engineer</h3>
-          <p className="timeline-company">
-            Vela Diagnostics PTE. LTD. · Singapore
-          </p>
-          <p>
-            Develop and maintain diagnostic laboratory software using C#,
-            .NET and web technologies, supporting assay workflows, data
-            processing, automation and production environments.
-          </p>
-          <p>
-            Worked across laboratory applications including SA201 Reporter,
-            Vela Analytics, One QPCR, Sentosa Workflow Assistant, SX-Flex-
-            Assistant and ID-List Generator, with additional experience in
-            instrument automation, XML/CSV processing and qPCR data analysis.
-          </p>
-        </div>
-      </div>
+              <div className="timeline-item">
+                <div className="timeline-year">
+                  2023 — PRESENT
+                </div>
 
-      <div className="timeline-item">
-        <div className="timeline-year">2022 — 2023</div>
+                <div>
+                  <h3>
+                    Senior Software Engineer
+                  </h3>
 
-        <div>
-          <h3>Senior Software Developer</h3>
-          <p className="timeline-company">
-            CB Bank · Myanmar
-          </p>
-          <p>
-            Developed personal and corporate iBanking applications,
-            payment and transfer modules, customer service systems and
-            financial reporting solutions.
-          </p>
-          <p>
-            Worked with .NET, WCF, Web APIs, SQL Server, RabbitMQ and
-            scheduled processing, collaborating with QA teams throughout
-            development and testing.
-          </p>
-        </div>
-      </div>
+                  <p className="timeline-company">
+                    Vela Diagnostics PTE. LTD. · Singapore
+                  </p>
 
-      <div className="timeline-item">
-        <div className="timeline-year">2016 — 2022</div>
+                  <p>
+                    Develop and maintain diagnostic
+                    laboratory software using C#, .NET
+                    and web technologies, supporting
+                    assay workflows, data processing,
+                    automation and production
+                    environments.
+                  </p>
 
-        <div>
-          <h3>Software Developer</h3>
-          <p className="timeline-company">
-            KoeKoeTech IT Social Enterprise Co., Ltd. · Myanmar
-          </p>
-          <p>
-            Built and maintained web applications, REST APIs and CMS
-            platforms across healthcare, public-sector and social-impact
-            projects.
-          </p>
-          <p>
-            Worked on platforms including MayMay / MayMay Plus, the Central
-            Statistical Organization website, Christian Aid child health
-            projects and other business and healthcare websites.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+                  <p>
+                    Worked across laboratory applications
+                    including SA201 Reporter, Vela
+                    Analytics, One QPCR, Sentosa Workflow
+                    Assistant, SX-Flex-Assistant and
+                    ID-List Generator, with additional
+                    experience in instrument automation,
+                    XML/CSV processing and qPCR data
+                    analysis.
+                  </p>
+                </div>
+              </div>
+
+              <div className="timeline-item">
+                <div className="timeline-year">
+                  2022 — 2023
+                </div>
+
+                <div>
+                  <h3>
+                    Senior Software Developer
+                  </h3>
+
+                  <p className="timeline-company">
+                    CB Bank · Myanmar
+                  </p>
+
+                  <p>
+                    Developed personal and corporate
+                    iBanking applications, payment and
+                    transfer modules, customer service
+                    systems and financial reporting
+                    solutions.
+                  </p>
+
+                  <p>
+                    Worked with .NET, WCF, Web APIs,
+                    SQL Server, RabbitMQ and scheduled
+                    processing, collaborating with QA
+                    teams throughout development and
+                    testing.
+                  </p>
+                </div>
+              </div>
+
+              <div className="timeline-item">
+                <div className="timeline-year">
+                  2016 — 2022
+                </div>
+
+                <div>
+                  <h3>
+                    Software Developer
+                  </h3>
+
+                  <p className="timeline-company">
+                    KoeKoeTech IT Social Enterprise
+                    Co., Ltd. · Myanmar
+                  </p>
+
+                  <p>
+                    Built and maintained web applications,
+                    REST APIs and CMS platforms across
+                    healthcare, public-sector and
+                    social-impact projects.
+                  </p>
+
+                  <p>
+                    Worked on platforms including MayMay /
+                    MayMay Plus, the Central Statistical
+                    Organization website, Christian Aid
+                    child health projects and other
+                    business and healthcare websites.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
 
         {/* ===================================================
             SKILLS
         =================================================== */}
 
-        <section id="skills" className="skills section-dark">
+        <section
+          id="skills"
+          className="skills section-dark"
+        >
           <div className="section-container">
-            <div className="section-label">04 — TECHNOLOGY</div>
+            <div className="section-label">
+              04 — TECHNOLOGY
+            </div>
 
             <div className="skills-heading">
               <h2>
@@ -759,7 +923,9 @@ function App() {
 
             <div className="skills-cloud">
               {skills.map((skill) => (
-                <span key={skill}>{skill}</span>
+                <span key={skill}>
+                  {skill}
+                </span>
               ))}
             </div>
           </div>
@@ -776,39 +942,54 @@ function App() {
             </div>
 
             <div className="approach-grid">
-              <div className="approach-number">01</div>
+
+              <div className="approach-number">
+                01
+              </div>
 
               <div>
-                <h3>Understand the problem first.</h3>
+                <h3>
+                  Understand the problem first.
+                </h3>
 
                 <p>
-                  Good software starts with understanding what people actually
-                  need, not immediately choosing a framework.
+                  Good software starts with understanding
+                  what people actually need, not immediately
+                  choosing a framework.
                 </p>
               </div>
 
-              <div className="approach-number">02</div>
+              <div className="approach-number">
+                02
+              </div>
 
               <div>
-                <h3>Build for the real world.</h3>
+                <h3>
+                  Build for the real world.
+                </h3>
 
                 <p>
-                  I care about reliability, maintainability, deployment,
-                  performance and what happens after the code reaches
-                  production.
+                  I care about reliability, maintainability,
+                  deployment, performance and what happens
+                  after the code reaches production.
                 </p>
               </div>
 
-              <div className="approach-number">03</div>
+              <div className="approach-number">
+                03
+              </div>
 
               <div>
-                <h3>Keep complexity invisible.</h3>
+                <h3>
+                  Keep complexity invisible.
+                </h3>
 
                 <p>
-                  The underlying system can be sophisticated. The experience
-                  should still feel simple.
+                  The underlying system can be sophisticated.
+                  The experience should still feel simple.
                 </p>
               </div>
+
             </div>
           </div>
         </section>
@@ -817,11 +998,16 @@ function App() {
             CONTACT
         =================================================== */}
 
-        <section id="contact" className="contact section-dark">
+        <section
+          id="contact"
+          className="contact section-dark"
+        >
           <div className="contact-glow" />
 
           <div className="section-container contact-container">
-            <div className="section-label">06 — CONTACT</div>
+            <div className="section-label">
+              06 — CONTACT
+            </div>
 
             <h2>
               Let&apos;s build
@@ -830,18 +1016,29 @@ function App() {
             </h2>
 
             <p>
-              I&apos;m currently open to Senior Software Engineering and
-              Full-Stack opportunities.
+              I&apos;m currently open to Senior Software
+              Engineering and Full-Stack opportunities.
             </p>
 
-            <a
-              href="mailto:nanneieihtun@gmail.com"
-              className="contact-button"
-            >
-              <Mail size={19} />
-              Get in touch
-              <ArrowUpRight size={18} />
-            </a>
+            <div className="contact-actions">
+              <a
+                href="mailto:nanneieihtun@gmail.com"
+                className="contact-button"
+              >
+                <Mail size={19} />
+                Get in touch
+                <ArrowUpRight size={18} />
+              </a>
+
+              <a
+                href="/Nan_Ei_Ei_Htun(Senior Software Engineer).pdf"
+                download
+                className="contact-button contact-button-secondary"
+              >
+                <ArrowDown size={18} />
+                Download CV
+              </a>
+            </div>
           </div>
         </section>
       </main>
@@ -851,14 +1048,26 @@ function App() {
       ===================================================== */}
 
       <footer className="footer section-dark">
-        <span>© 2026 Nan Ei Ei Htun</span>
+        <span>
+          © 2026 Nan Ei Ei Htun
+        </span>
 
         <div>
-          <a href="https://github.com/nanneieihtun" aria-label="GitHub">
+          <a
+            href="https://github.com/nanneieihtun"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+          >
             GH
           </a>
 
-          <a href="https://www.linkedin.com/in/naneieihtun" aria-label="LinkedIn">
+          <a
+            href="https://www.linkedin.com/in/naneieihtun"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+          >
             in
           </a>
         </div>

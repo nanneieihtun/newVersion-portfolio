@@ -1,10 +1,35 @@
 @import "tailwindcss";
 
 /* =========================================================
-   ROOT
+   THEME
 ========================================================= */
 
 :root {
+  --bg: #ffffff;
+  --bg-soft: #f5f5f7;
+  --bg-elevated: #ffffff;
+
+  --text: #111113;
+  --text-secondary: #626267;
+  --text-muted: #929297;
+
+  --border: rgba(17, 17, 19, 0.1);
+  --border-strong: rgba(17, 17, 19, 0.16);
+
+  --nav-bg: rgba(255, 255, 255, 0.78);
+
+  --dark-bg: #000000;
+  --dark-bg-soft: #101010;
+  --dark-text: #ffffff;
+  --dark-text-secondary: #a1a1a6;
+
+  --accent: #111113;
+  --accent-inverse: #ffffff;
+
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+
+  color-scheme: light;
+
   font-family:
     Inter,
     ui-sans-serif,
@@ -15,18 +40,37 @@
     "SF Pro Text",
     sans-serif;
 
-  color-scheme: dark;
-  background: #000;
-  color: #f5f5f7;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-:root[data-theme="light"] {
-  color-scheme: light;
+:root[data-theme="dark"] {
+  --bg: #080808;
+  --bg-soft: #111111;
+  --bg-elevated: #171717;
+
+  --text: #f5f5f7;
+  --text-secondary: #a1a1a6;
+  --text-muted: #77777c;
+
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.17);
+
+  --nav-bg: rgba(8, 8, 8, 0.78);
+
+  --dark-bg: #000000;
+  --dark-bg-soft: #101010;
+  --dark-text: #ffffff;
+  --dark-text-secondary: #a1a1a6;
+
+  --accent: #ffffff;
+  --accent-inverse: #000000;
+
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+
+  color-scheme: dark;
 }
 
 /* =========================================================
@@ -39,14 +83,18 @@
 
 html {
   scroll-behavior: smooth;
-  background: #000;
+  background: var(--bg);
 }
 
 body {
   margin: 0;
   min-width: 320px;
-  background: #000;
-  color: #111;
+  background: var(--bg);
+  color: var(--text);
+
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
 }
 
 body,
@@ -79,7 +127,14 @@ a {
 ========================================================= */
 
 .site {
+  min-height: 100vh;
   overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
 }
 
 .section-container {
@@ -88,13 +143,17 @@ a {
 }
 
 .section-dark {
-  background: #000;
-  color: #f5f5f7;
+  background: var(--dark-bg);
+  color: var(--dark-text);
 }
 
 .section-light {
-  background: #f5f5f7;
-  color: #111113;
+  background: var(--bg);
+  color: var(--text);
+
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
 }
 
 /* =========================================================
@@ -118,15 +177,20 @@ a {
 
   padding: 0 10px 0 20px;
 
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border);
   border-radius: 999px;
 
-  background: rgba(10, 10, 10, 0.76);
+  background: var(--nav-bg);
 
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
 
-  color: white;
+  color: var(--text);
+
+  transition:
+    background-color 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease;
 }
 
 .brand {
@@ -141,7 +205,7 @@ a {
   gap: 30px;
 
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--text-secondary);
 }
 
 .desktop-nav a {
@@ -149,7 +213,7 @@ a {
 }
 
 .desktop-nav a:hover {
-  color: white;
+  color: var(--text);
 }
 
 .nav-actions {
@@ -167,22 +231,24 @@ a {
   align-items: center;
   justify-content: center;
 
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border);
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.06);
-  color: white;
+  background: var(--bg-soft);
+  color: var(--text);
 
   cursor: pointer;
 
   transition:
     background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
     transform 0.2s ease;
 }
 
 .theme-toggle:hover,
 .menu-button:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--bg-elevated);
 }
 
 .theme-toggle:active,
@@ -200,20 +266,21 @@ a {
 
   border-radius: 999px;
 
-  background: white;
-  color: #111;
+  background: var(--accent);
+  color: var(--accent-inverse);
 
   font-size: 13px;
   font-weight: 600;
 
   transition:
     transform 0.2s ease,
-    background 0.2s ease;
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .nav-contact:hover {
   transform: translateY(-1px);
-  background: #f1f1f1;
+  opacity: 0.9;
 }
 
 .menu-button {
@@ -230,10 +297,10 @@ a {
 
   padding: 20px;
 
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border);
   border-radius: 24px;
 
-  background: rgba(10, 10, 10, 0.94);
+  background: var(--nav-bg);
 
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
@@ -242,7 +309,12 @@ a {
   flex-direction: column;
   gap: 18px;
 
-  color: white;
+  color: var(--text);
+
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease;
 }
 
 .mobile-menu a {
@@ -322,6 +394,7 @@ a {
   z-index: 2;
 
   width: min(1240px, calc(100% - 48px));
+
   margin: 0 auto;
 }
 
@@ -390,6 +463,7 @@ a {
   color: rgba(255, 255, 255, 0.58);
 
   font-size: 19px;
+
   line-height: 1.65;
 }
 
@@ -416,7 +490,8 @@ a {
 
   transition:
     transform 0.2s ease,
-    background 0.2s ease;
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .button:hover {
@@ -456,6 +531,7 @@ a {
   color: rgba(255, 255, 255, 0.27);
 
   font-size: 10px;
+
   letter-spacing: 0.16em;
 }
 
@@ -470,10 +546,11 @@ a {
 .section-label {
   font-size: 11px;
   font-weight: 700;
-
   letter-spacing: 0.18em;
 
-  opacity: 0.45;
+  color: var(--text-muted);
+
+  transition: color 0.35s ease;
 }
 
 .about-layout {
@@ -498,6 +575,8 @@ a {
   letter-spacing: -0.055em;
 
   font-weight: 600;
+
+  color: var(--text);
 }
 
 .about h2 span,
@@ -517,7 +596,9 @@ a {
 
   line-height: 1.65;
 
-  color: rgba(17, 17, 19, 0.58);
+  color: var(--text-secondary);
+
+  transition: color 0.35s ease;
 }
 
 /* =========================================================
@@ -526,6 +607,9 @@ a {
 
 .work {
   padding: 170px 0;
+
+  background: #000;
+  color: #f5f5f7;
 }
 
 .section-heading-light {
@@ -583,7 +667,6 @@ a {
   position: relative;
 
   width: 100%;
-
   height: 530px;
 
   perspective: 1400px;
@@ -592,11 +675,6 @@ a {
 
   outline: none;
 }
-
-/*
-  Keep the entire card at the same size.
-  Framer Motion controls rotateY.
-*/
 
 .project-card-inner {
   position: relative;
@@ -615,7 +693,6 @@ a {
 
 .project-card-face {
   position: absolute;
-
   inset: 0;
 
   width: 100%;
@@ -639,7 +716,7 @@ a {
 }
 
 /* =========================================================
-   FRONT
+   CARD FRONT
 ========================================================= */
 
 .project-card-front {
@@ -694,16 +771,20 @@ a {
 ========================================================= */
 
 .project-card-back {
-  background: #f5f5f7;
+  background: var(--bg-elevated);
 
-  color: #111113;
+  color: var(--text);
 
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border);
 
   transform: rotateY(180deg);
 
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.18);
+  box-shadow: var(--shadow);
+
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease;
 }
 
 /* =========================================================
@@ -715,21 +796,19 @@ a {
   z-index: 2;
 
   display: flex;
-
   justify-content: space-between;
   align-items: center;
 }
 
 .project-number {
   font-size: 12px;
-
   letter-spacing: 0.1em;
 
   color: rgba(255, 255, 255, 0.35);
 }
 
 .project-card-back .project-number {
-  color: rgba(17, 17, 19, 0.32);
+  color: var(--text-muted);
 }
 
 .project-arrow {
@@ -753,6 +832,7 @@ a {
 
 .project-card:hover .project-arrow {
   transform: translate(3px, -3px);
+
   background: rgba(255, 255, 255, 0.1);
 }
 
@@ -798,7 +878,7 @@ a {
 }
 
 .project-card-back .project-category {
-  color: rgba(17, 17, 19, 0.38);
+  color: var(--text-muted);
 }
 
 .project-card h3 {
@@ -822,7 +902,7 @@ a {
 }
 
 .project-card-back .project-subtitle {
-  color: rgba(17, 17, 19, 0.52);
+  color: var(--text-secondary);
 }
 
 .project-description {
@@ -888,10 +968,6 @@ a {
   white-space: nowrap;
 }
 
-.project-card-back .flip-hint {
-  color: rgba(17, 17, 19, 0.32);
-}
-
 /* =========================================================
    BACK SIDE
 ========================================================= */
@@ -923,7 +999,7 @@ a {
 
   letter-spacing: 0.16em;
 
-  color: rgba(17, 17, 19, 0.38);
+  color: var(--text-muted);
 }
 
 .project-back-divider {
@@ -932,7 +1008,7 @@ a {
 
   margin: 22px 0;
 
-  background: rgba(0, 0, 0, 0.1);
+  background: var(--border);
 }
 
 /* =========================================================
@@ -945,6 +1021,7 @@ a {
   gap: 8px;
 
   margin: 12px 0 0;
+
   padding: 0;
 
   list-style: none;
@@ -961,7 +1038,7 @@ a {
 
   line-height: 1.4;
 
-  color: rgba(17, 17, 19, 0.68);
+  color: var(--text-secondary);
 }
 
 .project-details li span {
@@ -969,7 +1046,7 @@ a {
 
   font-weight: 700;
 
-  color: #111;
+  color: var(--text);
 }
 
 /* =========================================================
@@ -991,9 +1068,9 @@ a {
 
   border-radius: 999px;
 
-  background: #111;
+  background: var(--accent);
 
-  color: white;
+  color: var(--accent-inverse);
 
   font-size: 10px;
 
@@ -1006,7 +1083,6 @@ a {
 
 .project-card-close {
   position: absolute;
-
   z-index: 10;
 
   top: 22px;
@@ -1016,17 +1092,16 @@ a {
   height: 42px;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
 
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--bg-soft);
 
-  color: #111;
+  color: var(--text);
 
   cursor: pointer;
 
@@ -1035,11 +1110,12 @@ a {
 
   transition:
     background 0.2s ease,
+    color 0.2s ease,
     transform 0.25s ease;
 }
 
 .project-card-close:hover {
-  background: white;
+  background: var(--bg-elevated);
 
   transform: rotate(90deg);
 }
@@ -1054,6 +1130,13 @@ a {
 
 .experience {
   padding: 180px 0;
+
+  background: var(--bg);
+  color: var(--text);
+
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
 }
 
 .experience-heading {
@@ -1073,7 +1156,9 @@ a {
 
   padding: 55px 0;
 
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid var(--border);
+
+  transition: border-color 0.35s ease;
 }
 
 .timeline-year {
@@ -1083,7 +1168,7 @@ a {
 
   letter-spacing: 0.13em;
 
-  color: rgba(17, 17, 19, 0.35);
+  color: var(--text-muted);
 }
 
 .timeline-item h3 {
@@ -1092,24 +1177,28 @@ a {
   font-size: 34px;
 
   letter-spacing: -0.035em;
+
+  color: var(--text);
 }
 
 .timeline-company {
   margin: 7px 0 25px;
 
-  color: rgba(17, 17, 19, 0.4);
+  color: var(--text-muted);
 }
 
-.timeline-item p:last-child {
+.timeline-item p {
   max-width: 650px;
 
-  margin-bottom: 0;
-
-  color: rgba(17, 17, 19, 0.58);
+  color: var(--text-secondary);
 
   font-size: 17px;
 
   line-height: 1.65;
+}
+
+.timeline-item p:last-child {
+  margin-bottom: 0;
 }
 
 /* =========================================================
@@ -1118,6 +1207,9 @@ a {
 
 .skills {
   padding: 180px 0;
+
+  background: #000;
+  color: #f5f5f7;
 }
 
 .skills-cloud {
@@ -1163,6 +1255,13 @@ a {
 
 .approach {
   padding: 180px 0;
+
+  background: var(--bg);
+  color: var(--text);
+
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
 }
 
 .approach-grid {
@@ -1182,7 +1281,7 @@ a {
 
   font-weight: 700;
 
-  color: rgba(17, 17, 19, 0.3);
+  color: var(--text-muted);
 }
 
 .approach-grid h3 {
@@ -1191,6 +1290,8 @@ a {
   font-size: 32px;
 
   letter-spacing: -0.035em;
+
+  color: var(--text);
 }
 
 .approach-grid p {
@@ -1202,7 +1303,7 @@ a {
 
   line-height: 1.65;
 
-  color: rgba(17, 17, 19, 0.55);
+  color: var(--text-secondary);
 }
 
 /* =========================================================
@@ -1221,6 +1322,9 @@ a {
   padding: 150px 0;
 
   overflow: hidden;
+
+  background: #000;
+  color: white;
 }
 
 .contact-glow {
@@ -1243,7 +1347,6 @@ a {
 
 .contact-container {
   position: relative;
-
   z-index: 2;
 }
 
@@ -1271,14 +1374,24 @@ a {
   line-height: 1.6;
 }
 
+.contact-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  flex-wrap: wrap;
+
+  margin-top: 35px;
+}
+
 .contact-button {
   display: inline-flex;
 
   align-items: center;
 
   gap: 12px;
-
-  margin-top: 35px;
 
   padding: 17px 22px;
 
@@ -1303,6 +1416,18 @@ a {
   background: #f1f1f1;
 }
 
+.contact-button-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  background: transparent;
+
+  color: white;
+}
+
+.contact-button-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
 /* =========================================================
    FOOTER
 ========================================================= */
@@ -1315,6 +1440,8 @@ a {
   justify-content: space-between;
 
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: #000;
 
   color: rgba(255, 255, 255, 0.3);
 
@@ -1511,7 +1638,7 @@ a {
     border-radius: 17px;
   }
 
-  .project-card-description {
+  .project-description {
     font-size: 13px;
   }
 
