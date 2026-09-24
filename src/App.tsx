@@ -31,10 +31,155 @@ type Project = {
 const projects: Project[] = [
   {
     number: "01",
-    title: "AI Travel Planner",
-    subtitle: "Plan less. Travel better.",
+    title: "SA201 Reporter",
+    subtitle: "Diagnostic laboratory software for real-world workflows.",
     description:
-      "A full-stack travel planning application designed to turn destinations, attractions and routes into a structured itinerary.",
+      "A laboratory software platform supporting assay management, plate setup, result interpretation, visualization and reporting.",
+    category: "PROFESSIONAL",
+    technologies: [".NET", "C#", "WPF", "REST API", "SQL", "RDLC"],
+    icon: <Code2 size={24} />,
+    featured: true,
+    details: [
+      "Assay run management",
+      "Plate setup workflows",
+      "Result interpretation",
+      "Ct threshold processing",
+      "Positive / negative determination",
+      "RDLC reporting",
+      "Data visualization",
+      "ID-List XML generation",
+      "Integration with QuantStudio 12K Flex",
+    ],
+  },
+  {
+    number: "02",
+    title: "Sentosa Workflow Assistant",
+    subtitle: "Reliable sample identification through automation.",
+    description:
+      "A laboratory workflow application focused on barcode validation and reliable sample identification.",
+    category: "PROFESSIONAL",
+    technologies: [".NET", "C#", "Barcode", "Automation"],
+    icon: <Sparkles size={24} />,
+    details: [
+      "Barcode validation",
+      "Sample identification",
+      "Workflow validation",
+      "Laboratory process automation",
+    ],
+  },
+  {
+    number: "03",
+    title: "SX-Flex-Assistant",
+    subtitle: "Software-assisted laboratory workflows.",
+    description:
+      "A software solution supporting laboratory workflows and integration around diagnostic instrument operations.",
+    category: "PROFESSIONAL",
+    technologies: [".NET", "C#", "Automation", "Laboratory"],
+    icon: <Server size={24} />,
+    details: [
+      "Laboratory workflow support",
+      "Application integration",
+      "Instrument workflow assistance",
+      "Operational troubleshooting",
+    ],
+  },
+  {
+    number: "04",
+    title: "ID-List Generator",
+    subtitle: "From plate setup to executable assay configuration.",
+    description:
+      "A utility for generating structured XML configuration files from laboratory plate setup workflows.",
+    category: "AUTOMATION",
+    technologies: ["C#", "XML", ".NET", "Laboratory"],
+    icon: <Database size={24} />,
+    details: [
+      "Plate setup layouts",
+      "XML generation",
+      "Assay configuration",
+      "Structured data processing",
+      "Automated laboratory workflow support",
+    ],
+  },
+  {
+    number: "05",
+    title: "Vela Analytics",
+    subtitle: "From application to production.",
+    description:
+      "Analytics software deployed and maintained in Linux-based production environments.",
+    category: "PROFESSIONAL",
+    technologies: [".NET", "Linux", "AWS", "Deployment"],
+    icon: <Server size={24} />,
+    details: [
+      "Linux server deployment",
+      "Runtime configuration",
+      "Service configuration",
+      "Dependency management",
+      "Production troubleshooting",
+      "Application maintenance",
+    ],
+  },
+  {
+    number: "06",
+    title: "CB Bank iBanking",
+    subtitle: "Digital banking for personal and corporate users.",
+    description:
+      "Contributed to banking platforms supporting personal and corporate customers, payments, transfers and financial reporting.",
+    category: "BANKING",
+    technologies: ["C#", ".NET", "WCF", "Web API", "SQL Server", "RabbitMQ"],
+    icon: <Code2 size={24} />,
+    details: [
+      "Personal iBanking platform",
+      "Corporate iBanking platform",
+      "Payment and transfer modules",
+      "Customer service portal",
+      "Payroll scheduler integration",
+      "RabbitMQ message handling",
+      "WCF services and APIs",
+      "RDLC financial reports",
+      "Electronic statements",
+    ],
+  },
+  {
+    number: "07",
+    title: "MayMay / MayMay Plus",
+    subtitle: "Web, APIs, CMS and conversational experiences.",
+    description:
+      "A digital platform combining web applications, REST APIs, CMS functionality and chatbot integration.",
+    category: "WEB PLATFORM",
+    technologies: ["Web", "REST API", "CMS", "Chatbot"],
+    icon: <Code2 size={24} />,
+    details: [
+      "Web application development",
+      "REST API development",
+      "CMS development",
+      "Android chatbot integration",
+      "Backend integration",
+      "Content management workflows",
+    ],
+  },
+  {
+    number: "08",
+    title: "Central Statistical Organization",
+    subtitle: "Digital platform for national statistics.",
+    description:
+      "A website and CMS developed to support the national statistical system and public access to statistical information.",
+    category: "PUBLIC SECTOR",
+    technologies: ["Web", "CMS", "REST API"],
+    icon: <Database size={24} />,
+    details: [
+      "Website development",
+      "CMS development",
+      "Statistical content management",
+      "Public-facing information architecture",
+      "Backend integration",
+    ],
+  },
+  {
+    number: "09",
+    title: "AI Travel Planner",
+    subtitle: "A modern full-stack project.",
+    description:
+      "A personal travel planning application built to explore modern full-stack architecture, itinerary planning and AI-assisted features.",
     category: "PERSONAL PROJECT",
     technologies: [
       "React",
@@ -52,33 +197,11 @@ const projects: Project[] = [
       "Entity Framework Core",
       "PostgreSQL data layer",
       "Destination and attraction management",
-      "Multi-day itinerary generation",
+      "Multi-day itinerary planning",
     ],
   },
-
   {
-    number: "02",
-    title: "SA201 Reporter",
-    subtitle: "Software for real-world laboratory workflows.",
-    description:
-      "A professional laboratory software platform supporting assay runs, sample workflows, result interpretation and reporting.",
-    category: "PROFESSIONAL",
-    technologies: [".NET", "C#", "REST API", "WPF", "SQL", "RDLC"],
-    icon: <Code2 size={24} />,
-    details: [
-      "Assay run management",
-      "Sample import and export workflows",
-      "Result interpretation",
-      "Ct threshold processing",
-      "Positive / negative determination",
-      "Plate setup workflows",
-      "RDLC reporting",
-      "ID-List XML generation",
-    ],
-  },
-
-  {
-    number: "03",
+    number: "10",
     title: "qPCR Machine Learning",
     subtitle: "Turning laboratory data into intelligence.",
     description:
@@ -95,58 +218,6 @@ const projects: Project[] = [
     ],
   },
 
-  {
-    number: "04",
-    title: "Vela Analytics",
-    subtitle: "From application to production.",
-    description:
-      "Deployment and maintenance of analytics software running on Linux-based environments.",
-    category: "PROFESSIONAL",
-    technologies: ["Linux", ".NET", "Deployment", "AWS"],
-    icon: <Server size={24} />,
-    details: [
-      "Linux server deployment",
-      "Runtime configuration",
-      "Service configuration",
-      "Application dependency management",
-      "Production maintenance",
-    ],
-  },
-
-  {
-    number: "05",
-    title: "One QPCR",
-    subtitle: "Better workflows through automation.",
-    description:
-      "Laboratory software focused on user experience and automated data export workflows.",
-    category: "PROFESSIONAL",
-    technologies: [".NET", "UI/UX", "Automation", "Data Export"],
-    icon: <Code2 size={24} />,
-    details: [
-      "User interface development",
-      "Workflow improvements",
-      "Automated export",
-      "Laboratory data handling",
-    ],
-  },
-
-  {
-    number: "06",
-    title: "Workflow Automation",
-    subtitle: "Small automation. Big operational impact.",
-    description:
-      "Automation utilities connecting software workflows with laboratory instruments and operational processes.",
-    category: "AUTOMATION",
-    technologies: ["C#", "AutoIt", "XML", "CSV"],
-    icon: <Sparkles size={24} />,
-    details: [
-      "Instrument workflow automation",
-      "CSV to XML conversion",
-      "Barcode validation",
-      "QR validation",
-      "Automated assay file handling",
-    ],
-  },
 ];
 
 const skills = [
@@ -181,9 +252,9 @@ function ThemeToggle() {
       return saved;
     }
 
-    return window.matchMedia("(prefers-color-scheme: light)").matches
-      ? "light"
-      : "dark";
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
   });
 
   useEffect(() => {
@@ -198,7 +269,8 @@ function ThemeToggle() {
       onClick={() =>
         setTheme((current) => (current === "dark" ? "light" : "dark"))
       }
-      aria-label="Toggle theme"
+      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"
+        } mode`}
     >
       {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
     </button>
@@ -208,160 +280,160 @@ function ThemeToggle() {
 /* =========================================================
    PROJECT FLIP CARD
    ========================================================= */
-   function ProjectCard({ project }: { project: Project }) {
-    const [flipped, setFlipped] = useState(false);
-  
-    const handleFlip = () => {
-      setFlipped(true);
-    };
-  
-    const handleClose = (event: React.MouseEvent<HTMLButtonElement>) => {
-      event.stopPropagation();
-      setFlipped(false);
-    };
-  
-    return (
-      <motion.article
-        className="project-card"
-        whileHover={!flipped ? { y: -8 } : undefined}
-        onClick={!flipped ? handleFlip : undefined}
-        onKeyDown={(event) => {
-          if (!flipped && (event.key === "Enter" || event.key === " ")) {
-            event.preventDefault();
-            handleFlip();
-          }
+function ProjectCard({ project }: { project: Project }) {
+  const [flipped, setFlipped] = useState(false);
+
+  const handleFlip = () => {
+    setFlipped(true);
+  };
+
+  const handleClose = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    setFlipped(false);
+  };
+
+  return (
+    <motion.article
+      className="project-card"
+      whileHover={!flipped ? { y: -8 } : undefined}
+      onClick={!flipped ? handleFlip : undefined}
+      onKeyDown={(event) => {
+        if (!flipped && (event.key === "Enter" || event.key === " ")) {
+          event.preventDefault();
+          handleFlip();
+        }
+      }}
+      role="button"
+      tabIndex={flipped ? -1 : 0}
+      aria-label={`View details for ${project.title}`}
+    >
+      <motion.div
+        className="project-card-inner"
+        animate={{
+          rotateY: flipped ? 180 : 0,
         }}
-        role="button"
-        tabIndex={flipped ? -1 : 0}
-        aria-label={`View details for ${project.title}`}
+        transition={{
+          duration: 0.75,
+          ease: [0.22, 1, 0.36, 1],
+        }}
       >
-        <motion.div
-          className="project-card-inner"
-          animate={{
-            rotateY: flipped ? 180 : 0,
-          }}
-          transition={{
-            duration: 0.75,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-        >
-          {/* =================================================
+        {/* =================================================
               FRONT
           ================================================= */}
-  
-          <div className="project-card-face project-card-front">
-            <div className="project-card-top">
-              <span className="project-number">
-                {project.number}
-              </span>
-  
-              <span className="project-arrow">
-                <ArrowUpRight size={22} />
-              </span>
-            </div>
-  
-            <div className="project-card-icon">
-              {project.icon}
-            </div>
-  
-            <div className="project-card-content">
-              <p className="project-category">
-                {project.category}
-              </p>
-  
-              <h3>{project.title}</h3>
-  
-              <p className="project-subtitle">
-                {project.subtitle}
-              </p>
-  
-              <p className="project-description">
-                {project.description}
-              </p>
-            </div>
-  
-            <div className="project-card-footer">
-              <div className="project-tech-list">
-                {project.technologies
-                  .slice(0, 4)
-                  .map((technology) => (
-                    <span key={technology}>
-                      {technology}
-                    </span>
-                  ))}
-              </div>
-  
-              <span className="flip-hint">
-                CLICK TO EXPLORE
-              </span>
-            </div>
+
+        <div className="project-card-face project-card-front">
+          <div className="project-card-top">
+            <span className="project-number">
+              {project.number}
+            </span>
+
+            <span className="project-arrow">
+              <ArrowUpRight size={22} />
+            </span>
           </div>
-  
-          {/* =================================================
+
+          <div className="project-card-icon">
+            {project.icon}
+          </div>
+
+          <div className="project-card-content">
+            <p className="project-category">
+              {project.category}
+            </p>
+
+            <h3>{project.title}</h3>
+
+            <p className="project-subtitle">
+              {project.subtitle}
+            </p>
+
+            <p className="project-description">
+              {project.description}
+            </p>
+          </div>
+
+          <div className="project-card-footer">
+            <div className="project-tech-list">
+              {project.technologies
+                .slice(0, 4)
+                .map((technology) => (
+                  <span key={technology}>
+                    {technology}
+                  </span>
+                ))}
+            </div>
+
+            <span className="flip-hint">
+              CLICK TO EXPLORE
+            </span>
+          </div>
+        </div>
+
+        {/* =================================================
               BACK
           ================================================= */}
-  
-          <div className="project-card-face project-card-back">
-            {/* CLOSE BUTTON */}
-  
-            <button
-              type="button"
-              className="project-card-close"
-              onClick={handleClose}
-              aria-label="Close project details"
-            >
-              <X size={20} />
-            </button>
-  
-            <div className="project-card-top">
-              <span className="project-number">
-                {project.number}
-              </span>
-  
-              <span className="project-back-label">
-                PROJECT DETAILS
-              </span>
-            </div>
-  
-            <div className="project-card-back-content">
-              <p className="project-category">
-                {project.category}
-              </p>
-  
-              <h3>{project.title}</h3>
-  
-              <p className="project-subtitle">
-                {project.subtitle}
-              </p>
-  
-              <div className="project-back-divider" />
-  
-              <p className="project-back-label">
-                WHAT I BUILT
-              </p>
-  
-              <ul className="project-details">
-                {project.details.map((detail) => (
-                  <li key={detail}>
-                    <span>+</span>
-                    {detail}
-                  </li>
-                ))}
-              </ul>
-            </div>
-  
-            <div className="project-back-tech">
-              {project.technologies.map((technology) => (
-                <span key={technology}>
-                  {technology}
-                </span>
-              ))}
-            </div>
+
+        <div className="project-card-face project-card-back">
+          {/* CLOSE BUTTON */}
+
+          <button
+            type="button"
+            className="project-card-close"
+            onClick={handleClose}
+            aria-label="Close project details"
+          >
+            <X size={20} />
+          </button>
+
+          <div className="project-card-top">
+            <span className="project-number">
+              {project.number}
+            </span>
+
+            <span className="project-back-label">
+              PROJECT DETAILS
+            </span>
           </div>
-        </motion.div>
-      </motion.article>
-    );
-  }
+
+          <div className="project-card-back-content">
+            <p className="project-category">
+              {project.category}
+            </p>
+
+            <h3>{project.title}</h3>
+
+            <p className="project-subtitle">
+              {project.subtitle}
+            </p>
+
+            <div className="project-back-divider" />
+
+            <p className="project-back-label">
+              WHAT I BUILT
+            </p>
+
+            <ul className="project-details">
+              {project.details.map((detail) => (
+                <li key={detail}>
+                  <span>+</span>
+                  {detail}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="project-back-tech">
+            {project.technologies.map((technology) => (
+              <span key={technology}>
+                {technology}
+              </span>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </motion.article>
+  );
+}
 
 /* =========================================================
    MAIN APP
@@ -490,8 +562,7 @@ function App() {
               transition={{ delay: 0.25 }}
             >
               Senior Software Engineer with 9+ years of experience building
-              full-stack applications across healthcare, banking, automation,
-              data and AI.
+              full-stack applications across biotechnology,healthcare, automation and banking
             </motion.p>
 
             <motion.div
@@ -541,9 +612,9 @@ function App() {
                 </p>
 
                 <p>
-                  My experience spans healthcare technology, banking systems,
-                  laboratory automation, analytics and modern AI-powered
-                  applications.
+                  My experience spans backend services, web applications, laboratory
+                  software, banking systems, automation workflows, analytics, and
+                  data-driven applications.
                 </p>
 
                 <p>
@@ -590,72 +661,85 @@ function App() {
             EXPERIENCE
         =================================================== */}
 
-        <section
-          id="experience"
-          className="experience section-light"
-        >
-          <div className="section-container">
-            <div className="section-label">03 — EXPERIENCE</div>
+<section id="experience" className="experience section-light">
+  <div className="section-container">
+    <div className="section-label">03 — EXPERIENCE</div>
 
-            <div className="experience-heading">
-              <h2>
-                9+ years of
-                <br />
-                <span>building software.</span>
-              </h2>
-            </div>
+    <div className="experience-heading">
+      <h2>
+        9+ years of
+        <br />
+        <span>building software.</span>
+      </h2>
+    </div>
 
-            <div className="timeline">
-              <div className="timeline-item">
-                <div className="timeline-year">2023 — PRESENT</div>
+    <div className="timeline">
+      <div className="timeline-item">
+        <div className="timeline-year">2023 — PRESENT</div>
 
-                <div>
-                  <h3>Senior Software Engineer</h3>
+        <div>
+          <h3>Senior Software Engineer</h3>
+          <p className="timeline-company">
+            Vela Diagnostics PTE. LTD. · Singapore
+          </p>
+          <p>
+            Develop and maintain diagnostic laboratory software using C#,
+            .NET and web technologies, supporting assay workflows, data
+            processing, automation and production environments.
+          </p>
+          <p>
+            Worked across laboratory applications including SA201 Reporter,
+            Vela Analytics, One QPCR, Sentosa Workflow Assistant, SX-Flex-
+            Assistant and ID-List Generator, with additional experience in
+            instrument automation, XML/CSV processing and qPCR data analysis.
+          </p>
+        </div>
+      </div>
 
-                  <p className="timeline-company">
-                    Vela Diagnostics PTE. LTD.
-                  </p>
+      <div className="timeline-item">
+        <div className="timeline-year">2022 — 2023</div>
 
-                  <p>
-                    Building laboratory software, automation workflows,
-                    analytics applications and supporting production
-                    environments.
-                  </p>
-                </div>
-              </div>
+        <div>
+          <h3>Senior Software Developer</h3>
+          <p className="timeline-company">
+            CB Bank · Myanmar
+          </p>
+          <p>
+            Developed personal and corporate iBanking applications,
+            payment and transfer modules, customer service systems and
+            financial reporting solutions.
+          </p>
+          <p>
+            Worked with .NET, WCF, Web APIs, SQL Server, RabbitMQ and
+            scheduled processing, collaborating with QA teams throughout
+            development and testing.
+          </p>
+        </div>
+      </div>
 
-              <div className="timeline-item">
-                <div className="timeline-year">2022 — 2023</div>
+      <div className="timeline-item">
+        <div className="timeline-year">2016 — 2022</div>
 
-                <div>
-                  <h3>Senior Software Developer</h3>
-
-                  <p className="timeline-company">CB Bank Myanmar</p>
-
-                  <p>
-                    Developed banking applications, APIs, payroll scheduling,
-                    RabbitMQ-based processing and reporting systems.
-                  </p>
-                </div>
-              </div>
-
-              <div className="timeline-item">
-                <div className="timeline-year">2016 — 2022</div>
-
-                <div>
-                  <h3>Software Developer</h3>
-
-                  <p className="timeline-company">KoeKoeTech</p>
-
-                  <p>
-                    Developed and maintained business applications across
-                    multiple products and technical environments.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <div>
+          <h3>Software Developer</h3>
+          <p className="timeline-company">
+            KoeKoeTech IT Social Enterprise Co., Ltd. · Myanmar
+          </p>
+          <p>
+            Built and maintained web applications, REST APIs and CMS
+            platforms across healthcare, public-sector and social-impact
+            projects.
+          </p>
+          <p>
+            Worked on platforms including MayMay / MayMay Plus, the Central
+            Statistical Organization website, Christian Aid child health
+            projects and other business and healthcare websites.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
         {/* ===================================================
             SKILLS
@@ -751,7 +835,7 @@ function App() {
             </p>
 
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:nanneieihtun@gmail.com"
               className="contact-button"
             >
               <Mail size={19} />
@@ -770,11 +854,11 @@ function App() {
         <span>© 2026 Nan Ei Ei Htun</span>
 
         <div>
-          <a href="#" aria-label="GitHub">
+          <a href="https://github.com/nanneieihtun" aria-label="GitHub">
             GH
           </a>
 
-          <a href="#" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/naneieihtun" aria-label="LinkedIn">
             in
           </a>
         </div>
